@@ -1,5 +1,16 @@
 @import "~bootstrap/scss/bootstrap";
 
+// Custom Stage Name in single Artist page
 h3.nav-link.active {
     font-size: 1.5rem;
+}
+
+// Custom bootstrap alert
+.alert.alert-dismissible {
+    position: absolute;
+    width: fit-content;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
 }
