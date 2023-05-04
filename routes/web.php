@@ -19,6 +19,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/artists', [ArtistController::class, 'index'])->name('artists.index');
+Route::get('/artists/{artist}', [ArtistController::class, 'show'])->name('artists.show');
 
 Route::get('/{any?}', function () {
     return redirect()->route('home');

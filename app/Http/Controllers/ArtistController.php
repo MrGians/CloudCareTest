@@ -17,4 +17,15 @@ class ArtistController extends Controller
         $artists = Artist::all();
         return view('artists.index', compact('artists'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Artist  $artist
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Artist $artist)
+    {
+        return view('artists.show', compact('artist'));
+    }
 }
