@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/artists', [ArtistController::class, 'index'])->name('artists.index');
+
 Route::get('/{any?}', function () {
     return redirect()->route('home');
 })->where('any', '.*');
