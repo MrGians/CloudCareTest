@@ -9,7 +9,7 @@
     </a>
   </header>
 
-  <form id="artists-form" class="row align-items-end g-3">
+  <form id="artists-form" class="row align-items-end border border-3 p-3">
     <div class="col-8">
       <label for="artist" class="form-label">Choose an Artists from the list to see his songs</label>
       <select class="form-control" id="artist" name="artist" placeholder="Type to search an Artist...">
