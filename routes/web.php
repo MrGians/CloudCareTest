@@ -19,7 +19,10 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/artists', [ArtistController::class, 'index'])->name('artists.index');
+Route::get('/artists/create', [ArtistController::class, 'create'])->name('artists.create');
 Route::get('/artists/{artist}', [ArtistController::class, 'show'])->name('artists.show');
+Route::post('/artists', [ArtistController::class, 'store'])->name('artists.store');
+
 
 Route::get('/{any?}', function () {
     return redirect()->route('home');
