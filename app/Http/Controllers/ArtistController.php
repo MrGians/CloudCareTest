@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreArtistRequest;
 use App\Models\Artist;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class ArtistController extends Controller
 {
@@ -35,14 +35,9 @@ class ArtistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreArtistRequest $request)
     {
-        // $data = $request->validated();
-        $data = $request->validate([
-            'stage_name' => ['required', 'string', 'max:100'],
-            'birthday' => ['required', 'string', 'date'],
-            'genre' => ['required', 'string', Rule::in(['Male', 'Female', 'Other'])],
-        ]);
+        $data = $request->validated();
 
         // Create Artist
         $artist = new Artist;
