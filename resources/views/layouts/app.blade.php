@@ -38,7 +38,7 @@
                                 <a class="nav-link @if (Route::is('artists.*')) active @endif" href="{{ route('artists.index') }}">Artists</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Home3</a>
+                                <a class="nav-link @if (Route::is('songs.*')) active @endif" href="{{ route('songs.index') }}">Songs</a>
                             </li>
                         </ul>
                     </div>
