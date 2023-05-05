@@ -25,7 +25,8 @@ class SongController extends Controller
      */
     public function create()
     {
-        //
+        $song = new Song;
+        return view('songs.create', compact('song'));
     }
 
     /**
@@ -47,7 +48,7 @@ class SongController extends Controller
      */
     public function edit(Song $song)
     {
-        //
+        return view('songs.edit', compact('song'));
     }
 
     /**
