@@ -30,7 +30,7 @@
                 <i class="fa-solid fa-pencil"></i>
               </a>
 
-              <form action="{{ route('songs.destroy', $song) }}" method="POST" class="d-inline-block">
+              <form action="{{ route('songs.destroy', $song) }}" method="POST" class="d-inline-block delete-form">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-sm btn-danger me-1" type="submit">
