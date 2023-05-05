@@ -33,13 +33,37 @@
             @enderror
         </div>
     </div>
-    {{-- TODO Song Artists --}}
+    {{-- Song Artists --}}
     <div class="mb-4 row">
-        
+      <div class="accordion col-md-10 @if(!old('artists') && $errors->any()) is-invalid @endif" id="artists-accordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="heading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#artist-list" aria-expanded="false" aria-controls="artist-list">
+              Choose one or more Artists from the list
+            </button>
+          </h2>
+          <div id="artist-list" class="accordion-collapse collapse" aria-labelledby="heading" data-bs-parent="#artists-accordion">
+            <div class="accordion-body">
+              @foreach ($artists as $artist)
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="artist-{{ $artist->id }}" value="{{ $artist->id }}" name="artists[]" @checked(in_array($artist->id, old('artists', $song_artists_ids ?? [])))>
+                  <label class="form-check-label" for="artist-{{ $artist->id }}">{{ $artist->stage_name }}</label>
+                </div>
+              @endforeach
+            </div>
+          </div>
+        </div>
+      </div>
+      @error('artists')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+      @enderror
     </div>
-    <div class="mb-4 row mb-0">
-        <div class="col-md-6 offset-md-4">
-            <button type="submit" class="btn btn-primary">{{ $song->exists ? 'Update' : 'Save' }}</button>
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">{{ $song->exists ? 'Update the Song' : 'Save the Song' }}</button>
         </div>
     </div>
   </form>
