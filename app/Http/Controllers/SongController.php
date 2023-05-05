@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidateSongRequest;
+use App\Models\Artist;
 use App\Models\Song;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,8 @@ class SongController extends Controller
     public function create()
     {
         $song = new Song;
-        return view('songs.create', compact('song'));
+        $artists = Artist::all();
+        return view('songs.create', compact('song', 'artists'));
     }
 
     /**
@@ -57,7 +59,16 @@ class SongController extends Controller
      */
     public function edit(Song $song)
     {
-        return view('songs.edit', compact('song'));
+        $artists = Artist::all();
+        
+        $song_artists_ids = [];
+        if(count($song->artists)){
+            foreach($song->artists as $artist){
+                $song_artists_ids[] = $artist->id;
+            }
+        }
+        
+        return view('songs.edit', compact('song', 'artists', 'song_artists_ids'));
     }
 
     /**

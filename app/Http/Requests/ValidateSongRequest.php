@@ -26,6 +26,7 @@ class ValidateSongRequest extends FormRequest
         return [
             'title' => ['required', 'string'],
             'publication_date' => ['required', 'string', 'date'],
+            'artists' => ['required', 'exists:artists,id'],
         ];
     }
 }
