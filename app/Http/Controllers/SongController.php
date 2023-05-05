@@ -47,6 +47,8 @@ class SongController extends Controller
         $song->fill($data);
         $song->save();
         
+        if (array_key_exists('artists', $data)) $song->artists()->sync($data['artists']);
+        
         return redirect()->route('songs.index')
         ->with('message', 'The new song has been successfully created!')->with('type', 'success');
     }
@@ -81,10 +83,12 @@ class SongController extends Controller
     public function update(ValidateSongRequest $request, Song $song)
     {
         $data = $request->validated();
-
+        
         // Update Song
         $song->update($data);
         $song->save();
+        
+        if (array_key_exists('artists', $data)) $song->artists()->sync($data['artists']);
         
         return redirect()->route('songs.index')
         ->with('message', 'The song has been successfully updated!')->with('type', 'success');
