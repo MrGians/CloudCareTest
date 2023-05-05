@@ -10,4 +10,9 @@ class Artist extends Model
     use HasFactory;
 
     protected $fillable = ['stage_name', 'birthday', 'genre'];
+
+    public function songs()
+    {
+        return $this->belongsToMany('App\Models\Song');
+    }
 }
