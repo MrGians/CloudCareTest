@@ -49,6 +49,7 @@
         {{-- Main content --}}
         <main>
             @include('includes.alert')
+            @include('includes.modal')
             @yield('content')
         </main>
     </body>
