@@ -42,7 +42,7 @@ class SongController extends Controller
             'publication_date' => ['required', 'string', 'date'],
         ]);
 
-        // Create Srtist
+        // Create Song
         $song = new Song;
         $song->fill($data);
         $song->save();
@@ -71,7 +71,17 @@ class SongController extends Controller
      */
     public function update(Request $request, Song $song)
     {
-        //
+        $data = $request->validate([
+            'title' => ['required', 'string'],
+            'publication_date' => ['required', 'string', 'date'],
+        ]);
+
+        // Update Song
+        $song->update($data);
+        $song->save();
+        
+        return redirect()->route('songs.index')
+        ->with('message', 'The song has been successfully updated!')->with('type', 'success');
     }
 
     /**
