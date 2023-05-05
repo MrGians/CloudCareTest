@@ -1,11 +1,17 @@
 @import "~bootstrap/scss/bootstrap";
 
+// | ----- Helpers
+.w-max {
+    width: max-content;
+}
+
+// | ----- Bootstrap Custom
 // Custom Stage Name in single Artist page
 h3.nav-link.active {
     font-size: 1.5rem;
 }
 
-// Custom bootstrap alert
+// Custom alert
 .alert.alert-dismissible {
     position: absolute;
     width: fit-content;
