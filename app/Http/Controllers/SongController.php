@@ -6,6 +6,7 @@ use App\Http\Requests\ValidateSongRequest;
 use App\Models\Artist;
 use App\Models\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class SongController extends Controller
 {
@@ -27,6 +28,12 @@ class SongController extends Controller
      */
     public function create()
     {
+        if (count(Artist::all()) < 1) {
+            return redirect()->route('artists.create')
+            ->with('message', 'Access denied. To be able to register a new song you must have registered at least one Artist.')
+            ->with('type', 'danger');
+        }
+
         $song = new Song;
         $artists = Artist::all();
         return view('songs.create', compact('song', 'artists'));
