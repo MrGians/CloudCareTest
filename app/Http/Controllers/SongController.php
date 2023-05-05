@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidateSongRequest;
 use App\Models\Song;
 use Illuminate\Http\Request;
 
@@ -32,15 +33,12 @@ class SongController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Requests\ValidateSongRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidateSongRequest $request)
     {
-        $data = $request->validate([
-            'title' => ['required', 'string'],
-            'publication_date' => ['required', 'string', 'date'],
-        ]);
+        $data = $request->validated();
 
         // Create Song
         $song = new Song;
@@ -65,16 +63,13 @@ class SongController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Requests\ValidateSongRequest  $request
      * @param  \App\Models\Song  $song
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Song $song)
+    public function update(ValidateSongRequest $request, Song $song)
     {
-        $data = $request->validate([
-            'title' => ['required', 'string'],
-            'publication_date' => ['required', 'string', 'date'],
-        ]);
+        $data = $request->validated();
 
         // Update Song
         $song->update($data);
