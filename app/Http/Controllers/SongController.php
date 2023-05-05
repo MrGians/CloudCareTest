@@ -37,7 +37,18 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title' => ['required', 'string'],
+            'publication_date' => ['required', 'string', 'date'],
+        ]);
+
+        // Create Srtist
+        $song = new Song;
+        $song->fill($data);
+        $song->save();
+        
+        return redirect()->route('songs.index')
+        ->with('message', 'The new song has been successfully created!')->with('type', 'success');
     }
 
     /**
