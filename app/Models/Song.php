@@ -9,8 +9,14 @@ class Song extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = ['title', 'publication_date'];
 
+    
     public function artists()
     {
         return $this->belongsToMany('App\Models\Artist');
